@@ -1,11 +1,17 @@
 class Question {
-  final String question;
-  final List<String> options;
-  final int correctAnswerIndex;
+  String questionText;
+  List<String> options;
+  int correctOptionIndex;
+  int selectedOptionIndex;
 
-  const Question({
-    required this.correctAnswerIndex,
-    required this.question,
+  Question({
+    required this.questionText,
     required this.options,
+    required this.correctOptionIndex,
+    this.selectedOptionIndex = -1,
   });
+
+  bool get isAttempted => selectedOptionIndex != -1;
+
+  bool get isCorrect => selectedOptionIndex == correctOptionIndex;
 }

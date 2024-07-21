@@ -14,80 +14,83 @@ class QuizScreen extends StatelessWidget {
         backgroundColor: Color(0xff22272E),
         title: const Text(
           'Quiz App',
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
+        centerTitle: true,
+        elevation: 5,
+        shadowColor: Colors.grey,
       ),
       body: Obx(() {
         if (controller.gameOver.value) {
-          return Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Game Over',
-                  style: TextStyle(fontSize: 34, color: Colors.white),
-                ),
-                SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    controller.resetGame(); // Reset game state
-                    Get.offAll(() => QuizScreen()); // Restart the screen
-                  },
-                  child: Text('Restart'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
-                  ),
-                ),
-              ],
-            ),
-          );
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            controller.showResultDialog();
+          });
+          return SizedBox.shrink();
         }
 
-        final question = questions[controller.questionIndex.value];
+        final question = controller.questions[controller.questionIndex.value];
 
         return Padding(
           padding: const EdgeInsets.all(24.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
+              SizedBox(
+                height: 50,
+              ),
               Text(
-                question.question,
-                style: const TextStyle(fontSize: 21, color: Colors.white),
+                question.questionText,
+                style: const TextStyle(
+                    fontSize: 25,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
-              ListView.builder(
-                shrinkWrap: true,
-                itemCount: question.options.length,
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: controller.selectedAnswerIndex.value == null &&
-                        !controller.gameOver.value
-                        ? () => controller.Answer(index)
-                        : null,
-                    child: AnswerCard(
-                      currentIndex: index,
-                      question: question.options[index],
-                      isSelected: controller.selectedAnswerIndex.value == index,
-                      selectedAnswerIndex: controller.selectedAnswerIndex.value ?? -1,
-                      correctAnswerIndex: question.correctAnswerIndex,
-                      isAttempted: controller.attempts.value > 0,
-                    ),
-                  );
-                },
+              SizedBox(
+                height: 20,
               ),
-              ElevatedButton(
-                onPressed: controller.selectedAnswerIndex.value != null &&
-                    !controller.gameOver.value
-                    ? () {
-                  controller.goToNextQuestion();
-                }
-                    : null,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
+              Expanded(
+                child: ListView.builder(
+                  itemCount: question.options.length,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: controller.selectedAnswerIndex.value == null &&
+                              !controller.gameOver.value
+                          ? () => controller.answer(index)
+                          : null,
+                      child: AnswerCard(
+                        currentIndex: index,
+                        question: question.options[index],
+                        isSelected:
+                            controller.selectedAnswerIndex.value == index,
+                        selectedAnswerIndex:
+                            controller.selectedAnswerIndex.value ?? -1,
+                        correctAnswerIndex: question.correctOptionIndex,
+                        isAttempted: controller.attempts.value > 0,
+                      ),
+                    );
+                  },
                 ),
-                child: Text(
-                  'Next',
-                  style: TextStyle(color: Colors.white),
+              ),
+              GestureDetector(
+                onTap: controller.selectedAnswerIndex.value != null &&
+                        !controller.gameOver.value
+                    ? () {
+                        controller.goToNextQuestion();
+                      }
+                    : null,
+                child: Container(
+                  padding: EdgeInsets.symmetric(vertical: 16, horizontal: 32),
+                  decoration: BoxDecoration(
+                    color: Colors.orange,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Next',
+                      style: TextStyle(color: Colors.white, fontSize: 18),
+                    ),
+                  ),
                 ),
               ),
             ],
