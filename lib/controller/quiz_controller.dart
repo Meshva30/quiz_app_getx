@@ -159,95 +159,71 @@ class QuizController extends GetxController {
 
   List<Question> questions = [
     Question(
-      questionText: '1. What is the capital of France?',
-      correctOptionIndex: 1,
-      options: [
-        'a) Madrid',
-        'b) Paris',
-        'c) Berlin',
-        'd) Rome',
-      ],
-    ),
+        questionText: '1. What is the capital of France?',
+        correctOptionIndex: 1,
+        options: ['a) Madrid', 'b) Paris', 'c) Berlin', 'd) Rome']),
     Question(
-      questionText: '2. In what continent is Brazil located?',
-      correctOptionIndex: 3,
-      options: [
-        'a) Europe',
-        'b) Asia',
-        'c) North America',
-        'd) South America',
-      ],
-    ),
+        questionText: '2. In what continent is Brazil located?',
+        correctOptionIndex: 3,
+        options: [
+          'a) Europe',
+          'b) Asia',
+          'c) North America',
+          'd) South America'
+        ]),
     Question(
-      questionText: '3. What is the largest planet in our solar system?',
-      correctOptionIndex: 1,
-      options: [
-        'a) Earth',
-        'b) Jupiter',
-        'c) Saturn',
-        'd) Venus',
-      ],
-    ),
+        questionText: '3. What is the largest planet in our solar system?',
+        correctOptionIndex: 1,
+        options: ['a) Earth', 'b) Jupiter', 'c) Saturn', 'd) Venus']),
     Question(
-      questionText: '4. What is the longest river in the world?',
-      correctOptionIndex: 0,
-      options: [
-        'a) Nile',
-        'b) Amazon',
-        'c) Mississippi',
-        'd) Danube',
-      ],
-    ),
+        questionText: '4. What is the longest river in the world?',
+        correctOptionIndex: 0,
+        options: ['a) Nile', 'b) Amazon', 'c) Mississippi', 'd) Danube']),
     Question(
-      questionText: '5. Who is the main character in the Harry Potter series?',
-      correctOptionIndex: 2,
-      options: [
-        'a) Hermione Granger',
-        'b) Ron Weasley',
-        'c) Harry Potter',
-        'd) Neville Longbottom',
-      ],
-    ),
+        questionText:
+            '5. Who is the main character in the Harry Potter series?',
+        correctOptionIndex: 2,
+        options: [
+          'a) Hermione Granger',
+          'b) Ron Weasley',
+          'c) Harry Potter',
+          'd) Neville Longbottom'
+        ]),
     Question(
-      questionText: '6. What is the smallest planet in our solar system?',
-      correctOptionIndex: 3,
-      options: [
-        'a) Venus',
-        'b) Mars',
-        'c) Earth',
-        'd) Mercury',
-      ],
-    ),
+        questionText: '6. What is the smallest planet in our solar system?',
+        correctOptionIndex: 3,
+        options: ['a) Venus', 'b) Mars', 'c) Earth', 'd) Mercury']),
     Question(
-      questionText: '7. Who wrote the play Romeo and Juliet?',
-      correctOptionIndex: 0,
-      options: [
-        'a) William Shakespeare',
-        'b) Oscar Wilde',
-        'c) Jane Austen',
-        'd) Charles Dickens',
-      ],
-    ),
+        questionText: '7. Who wrote the play Romeo and Juliet?',
+        correctOptionIndex: 0,
+        options: [
+          'a) William Shakespeare',
+          'b) Oscar Wilde',
+          'c) Jane Austen',
+          'd) Charles Dickens'
+        ]),
     Question(
-      questionText: '8. What is the highest mountain in the world?',
-      correctOptionIndex: 1,
-      options: [
-        'a) Mont Blanc',
-        'b) Everest',
-        'c) Kilimanjaro',
-        'd) Aconcagua',
-      ],
-    ),
+        questionText: '8. What is the highest mountain in the world?',
+        correctOptionIndex: 1,
+        options: [
+          'a) Mont Blanc',
+          'b) Everest',
+          'c) Kilimanjaro',
+          'd) Aconcagua'
+        ]),
     Question(
-      questionText:
-          '9. What is the name of the famous painting by Leonardo da Vinci that depicts a woman?',
-      correctOptionIndex: 3,
-      options: [
-        'a) Starry Night',
-        'b) The Persistence of Memory',
-        'c) The Last Supper',
-        'd) Mona Lisa',
-      ],
-    ),
+        questionText:
+            '9. What is the name of the famous painting by Leonardo da Vinci that depicts a woman?',
+        correctOptionIndex: 3,
+        options: [
+          'a) Starry Night',
+          'b) The Persistence of Memory',
+          'c) The Last Supper',
+          'd) Mona Lisa'
+        ]),
+    Question(
+        questionText: '10. What is the chemical symbol for water?',
+        correctOptionIndex: 0,
+        options: ['a) H2O', 'b) CO2', 'c) O2', 'd) NaCl']),
   ];
 }
